@@ -3,9 +3,13 @@ const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
 var sf = require('node-salesforce');
-var storage = require('node-localstorage').LocalStorage;
+//var localstorage = require('node-localstorage');
 var bodyParser = require('body-parser')
 
+if (typeof localStorage === "undefined" || localStorage === null) {
+    var LocalStorage = require('node-localstorage').LocalStorage;
+    localStorage = new LocalStorage('./scratch');
+  }
 
 var app = express();
 const port = process.env.PORT || 3000;
@@ -51,8 +55,8 @@ app.get('/authenticate', (req, res) => {
         // console.log("Org ID: " + userInfo.organizationId);
         res.send({accessToken : conn.accessToken ,
         instanceURL : conn.instanceURL});
-        storage.setItem('accessToken',conn.accessToken);
-        console.log('asdasdasdasdasdasd'+storage.getItem('accessToken')); 
+        localStorage.setItem('accessToken',conn.accessToken);
+        console.log('asdasdasdasdasdasd'+localStorage.getItem('accessToken')); 
 
         });          
 });
