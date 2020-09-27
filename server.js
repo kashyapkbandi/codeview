@@ -34,7 +34,7 @@ app.set('views',viewPath);
 
 
 
-app.get('/codeview',(req,res)=>{
+app.get('/',(req,res)=>{
 res.render('Main');
 });
 
