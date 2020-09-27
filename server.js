@@ -63,8 +63,8 @@ res.render('Home');
 });
 
  
-app.post('/callback',(req,res)=>{
-res.render('callback');
+app.post('/Main',(req,res)=>{
+res.render('Main');
 });
 
 app.set('view engine','hbs');
