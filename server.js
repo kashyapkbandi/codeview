@@ -3,13 +3,14 @@ const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
 var sf = require('node-salesforce');
-var sessionStore = require('sessionstorage'); 
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 
  
 
 var app = express();
 const port = process.env.PORT || 3000;
+app.use(cookieParser());
 
 // middleware
 // __dirname - stores path to directory
@@ -50,21 +51,15 @@ app.get('/authenticate', (req, res) => {
         // // logged in user property
         // console.log("User ID: " + userInfo.id);
         // console.log("Org ID: " + userInfo.organizationId);
-        res.send({accessToken : conn.accessToken ,
-        instanceURL : conn.instanceURL});
-        sessionStore.setTiem('accessToken', conn.accessToken )
-        console.log('Store Library Token - '+store.getItem('accessToken')); 
 
+        res.cookie(accessToken, conn.accessToken,{maxAge: 360000}); 
+       // res.send('Authenticated Successfully !');
+        res.render('Authenticated');
         });          
 });
 
 app.get('/',(req,res)=>{
-
-
-
-
-
-res.render('Main');
+res.render('Home');
 });
 
  
