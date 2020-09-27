@@ -3,13 +3,10 @@ const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
 var sf = require('node-salesforce');
-var localStorage = require('node-localstorage');
+var store = require('store')
 var bodyParser = require('body-parser')
 
-if (typeof localStorage === "undefined" || localStorage === null) {
-    var LocalStorage = require('node-localstorage').LocalStorage;
-    localStorage = new LocalStorage('./scratch');
-  }
+ 
 
 var app = express();
 const port = process.env.PORT || 3000;
@@ -55,8 +52,8 @@ app.get('/authenticate', (req, res) => {
         // console.log("Org ID: " + userInfo.organizationId);
         res.send({accessToken : conn.accessToken ,
         instanceURL : conn.instanceURL});
-        localStorage.setItem('accessToken',conn.accessToken);
-        console.log('asdasdasdasdasdasd'+localStorage.getItem('accessToken')); 
+        store.set('credential', { accessToken:conn.accessToken })
+        console.log('Store Library Token - '+store.get('credential').accessToken); 
 
         });          
 });
