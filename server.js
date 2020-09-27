@@ -49,8 +49,8 @@ app.get('/authenticate', (req, res) => {
         // // logged in user property
         // console.log("User ID: " + userInfo.id);
         // console.log("Org ID: " + userInfo.organizationId);
-        res.send({accessToken : conn.accessToken ,
-        instanceURL : conn.instanceURL});
+        // res.send({accessToken : conn.accessToken ,
+        // instanceURL : conn.instanceURL});
         localStorage.setItem('accessToken',conn.accessToken);
         console.log('asdasdasdasdasdasd'+localStorage.getItem('accessToken')); 
 
