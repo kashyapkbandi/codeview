@@ -51,10 +51,10 @@ app.get('/authenticate', (req, res) => {
         // // logged in user property
         // console.log("User ID: " + userInfo.id);
         // console.log("Org ID: " + userInfo.organizationId);
-
-        res.cookie(accessToken, conn.accessToken,{maxAge: 360000}); 
+    
+        res.cookie(accessToken, conn.accessToken); 
        // res.send('Authenticated Successfully !');
-        res.render('Authenticated');
+        res.send(res.send(req.cookies));
         });          
 });
 
