@@ -13,13 +13,19 @@
     <style>
         .customJumbotron {
             padding: 1%;
-            height: 350px;
+            height: 500px;
+        }
+
+
+        .debugJumbotron{
+            height: 90%;
         }
 
         #videoElement {
-            width: 500px;
-            height: 375px;
+            width: 400;
+            height: 275px;
             background-color: #666;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         }
 
         .customStyler_Nav {
@@ -36,28 +42,33 @@
     </a>
 </nav>
 
-<body style="padding:%;overflow:auto;">
+<body style="overflow:auto;">
 
     <div class="container-fluid" style="margin:auto;width:100%;">
-        <div class="row">
-            <div class="col-8">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light customStyler_Nav">
+  <div class="row">
+    <div class="col">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light customStyler_Nav">
                     <a class="navbar-brand" href="#">Edit your code here</a>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="soqlCheck">
+                        <label class="form-check-label" for="soqlCheck">SOQL Query</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <input type="checkbox" class="form-check-input" id="apexCheck">
+                        <label class="form-check-label" for="apexCheck">Apex Code</label>
+                    </div>
                 </nav>
                 <div class="jumbotron customJumbotron">
-                    <textarea class="form-control" style="height: 100%;" aria-label="With textarea"></textarea>
+                    <textarea class="form-control" style="height: 100%;resize:none;" aria-label="With textarea"></textarea>
                 </div>
-            </div>
-            <div class="col-4">
-                <video autoplay="true" id="videoElement"></video>
-            </div>
-        </div>
-        <div class="row" style="resize: vertical;overflow: hidden;">
-            <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light customStyler_Nav">
-                    <a class="navbar-brand" href="#">Read your logs here</a>
+                <div class="col align-self-end">
+                    	<video autoplay="true" id="videoElement">
+                </div>
+    </div>
+    <div class="col">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light customStyler_Nav">
+                    <a class="navbar-brand" href="#"><a class="btn btn-primary btn-lg" href="#" role="button">Execute the code</a>&nbsp; Read your logs below</a>
                 </nav>
-                <div class="jumbotron">
+                <div class="jumbotron debugJumbotron">
                     <h1 class="display-4">Hello, world!</h1>
                     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
                         attention to featured content or information.</p>
@@ -66,8 +77,9 @@
                         container.</p>
                     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                 </div>
-            </div>
-        </div>
+    </div>
+  </div>
+
     </div>
 
 
@@ -97,7 +109,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="/scripts/UtilityScript.js"></script>        
+    <script src="/scripts/UtilityScript.js"></script>
 </body>
 
 </html>
