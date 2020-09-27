@@ -3,7 +3,7 @@ const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
 var sf = require('node-salesforce');
-
+var storage = require('node-localstorage');
 var bodyParser = require('body-parser')
 
 
@@ -51,10 +51,9 @@ app.get('/authenticate', (req, res) => {
         // console.log("Org ID: " + userInfo.organizationId);
         res.send({accessToken : conn.accessToken ,
         instanceURL : conn.instanceURL});
-        Window.localStorage.setItem('accessToken',conn.accessToken);
-        console.log('asdasdasdasdasdasd'+Window.localStorage.getItem('accessToken')); 
+        storage.setItem('accessToken',conn.accessToken);
+        console.log('asdasdasdasdasdasd'+storage.getItem('accessToken')); 
 
-        
         });          
 });
 
