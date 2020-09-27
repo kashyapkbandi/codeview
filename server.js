@@ -54,7 +54,7 @@ app.get('/authenticate', (req, res) => {
     
         res.cookie('accessToken', conn.accessToken); 
        // res.send('Authenticated Successfully !');
-        res.send(res.send(req.cookies));
+        res.render('Authenticated');
         });          
 });
 
