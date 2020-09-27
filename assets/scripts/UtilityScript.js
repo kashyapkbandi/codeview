@@ -5,7 +5,9 @@ const OrgUtils = {
     OrgBaseUrl: "https://codestation-dev-ed.my.salesforce.com",
     isData: '/services/data/',
     apiVersion: 'v48.0',
-    queryString: '/query/?q='
+    queryString: '/query/?q=',
+    apexString:'tooling/executeAnonymous/?anonymousBody=',
+
 };
 
 
@@ -17,13 +19,12 @@ document.querySelector('#executeButtn').addEventListener("click", () => {
     // check if query checkbox is checked or not.
  
     if (document.getElementById("soqlCheck").checked) {
-        
         // If the SOQL is checked that means, the APEX should be unchecked
         // Because we will be hitting diff endpoints to handle apex vs soql.
         if (!document.getElementById("apexCheck").checked) {
             // get query / code from the text area
             var query = document.querySelector('#codequeryTextArea').value;
-            var result = fetchGETCall(OrgUtils.OrgBaseUrl + OrgUtils.isData + OrgUtils.apiVersion + OrgUtils.queryString + query, 'GET', '', accessTokenValue);
+            var result = fetchGETCall(OrgUtils.OrgBaseUrl + OrgUtils.isData + OrgUtils.apiVersion + OrgUtils.queryString + query, 'GET', accessTokenValue);
         }
         else {
             alert("Please check either SOQL or APEX.");
@@ -31,14 +32,12 @@ document.querySelector('#executeButtn').addEventListener("click", () => {
     } else
     // this means, apex checkbox is on.
     {
-        // if SOQL is unchecked or not
-        if (!document.getElementById("soqlCheck").checked) {
+  
 
-        }
-        else {
-            // if apex and soql are checked
-            alert("Please check either SOQL or APEX.");
-        }
+            var code = document.querySelector('#codequeryTextArea').value;
+            var result = fetchGETCall(OrgUtils.OrgBaseUrl + OrgUtils.isData + OrgUtils.apiVersion + OrgUtils.apexString + code, 'GET', accessTokenValue);
+            
+       
     }
 
 
@@ -52,7 +51,7 @@ function retrieveCookie(cookie) {
 }
 
 
-function fetchGETCall(url, method, payload, accessToken) {
+function fetchGETCall(url, method, accessToken) {
     fetch(url, {
         method: 'get',
         headers: {
