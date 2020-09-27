@@ -52,10 +52,10 @@ app.get('/authenticate', (req, res) => {
         res.send({accessToken : conn.accessToken ,
         instanceURL : conn.instanceURL});
         
-        if(localStorage.getItem('accessToken')!=null)
+        if(localStorage.getItem('accessToken'))
         {
             localStorage.removeItem('accessToken')
-            localStorage.setItem('accessToken',accessToken);
+            localStorage.setItem('accessToken',conn.accessToken);
             console.log('asdasdasdasdasdasd'+localStorage.getItem('accessToken')); 
         }
         
