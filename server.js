@@ -63,7 +63,7 @@ res.render('Home');
 });
 
  
-app.post('/Main',(req,res)=>{
+app.get('/Main',(req,res)=>{
 res.render('Main');
 });
 
