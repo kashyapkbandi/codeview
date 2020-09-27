@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
+var sf = require('node-salesforce');
+
 var bodyParser = require('body-parser')
 
 
@@ -31,10 +33,41 @@ console.log(viewPath);
 
 app.set('views',viewPath);
 
+var conn = new sf.Connection({
+    // you can change loginUrl to connect to sandbox or prerelease env.
+    loginUrl: 'https://login.salesforce.com'
+});
 
-
+app.get('/authenticate', (req, res) => {
+    conn.login('kkalakbandi-euy8@force.com', 'Transformer1uGJhyISOQwHqGFv5t13odlUk', function(err, userInfo) {
+        if (err) { return console.error(err); }
+        // Now you can get the access token and instance URL information.
+        // Save them to establish connection next time.
+        // console.log('inside'+conn.accessToken);
+        // console.log('inside'+conn.instanceUrl);
+        
+        // // logged in user property
+        // console.log("User ID: " + userInfo.id);
+        // console.log("Org ID: " + userInfo.organizationId);
+        res.send({accessToken : conn.accessToken ,
+        instanceURL : conn.instanceURL});
+        
+        if(localStorage.getItem('accessToken')!=null)
+        {
+            localStorage.removeItem('accessToken')
+            localStorage.setItem('accessToken',accessToken);
+            console.log('asdasdasdasdasdasd'+localStorage.getItem('accessToken')); 
+        }
+        
+        });          
+});
 
 app.get('/',(req,res)=>{
+
+
+
+
+
 res.render('Main');
 });
 

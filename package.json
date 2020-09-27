@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "handlebar": "^1.0.0",
     "hbs": "^4.1.1",
+    "node-salesforce": "^0.8.0",
     "path": "^0.12.7",
     "request": "^2.88.2"
   }
