@@ -51,13 +51,9 @@ app.get('/authenticate', (req, res) => {
         // console.log("Org ID: " + userInfo.organizationId);
         res.send({accessToken : conn.accessToken ,
         instanceURL : conn.instanceURL});
-        
-        if(localStorage.getItem('accessToken'))
-        {
-            localStorage.removeItem('accessToken')
-            localStorage.setItem('accessToken',conn.accessToken);
-            console.log('asdasdasdasdasdasd'+localStorage.getItem('accessToken')); 
-        }
+        localStorage.setItem('accessToken',conn.accessToken);
+        console.log('asdasdasdasdasdasd'+localStorage.getItem('accessToken')); 
+
         
         });          
 });
