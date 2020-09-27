@@ -52,7 +52,7 @@ app.get('/authenticate', (req, res) => {
         // console.log("User ID: " + userInfo.id);
         // console.log("Org ID: " + userInfo.organizationId);
     
-        res.cookie(accessToken, conn.accessToken); 
+        res.cookie('accessToken', conn.accessToken); 
        // res.send('Authenticated Successfully !');
         res.send(res.send(req.cookies));
         });          
