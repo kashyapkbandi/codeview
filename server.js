@@ -3,7 +3,7 @@ const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
 var sf = require('node-salesforce');
-var store = require('store')
+var sessionStore = require('sessionstorage'); 
 var bodyParser = require('body-parser')
 
  
@@ -52,8 +52,8 @@ app.get('/authenticate', (req, res) => {
         // console.log("Org ID: " + userInfo.organizationId);
         res.send({accessToken : conn.accessToken ,
         instanceURL : conn.instanceURL});
-        store.set('credential', { accessToken:conn.accessToken })
-        console.log('Store Library Token - '+store.get('credential').accessToken); 
+        sessionStore.setTiem('accessToken', conn.accessToken )
+        console.log('Store Library Token - '+store.getItem('accessToken')); 
 
         });          
 });
