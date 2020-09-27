@@ -3,7 +3,7 @@ const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
 var sf = require('node-salesforce');
-//var localstorage = require('node-localstorage');
+var localStorage = require('node-localstorage');
 var bodyParser = require('body-parser')
 
 if (typeof localStorage === "undefined" || localStorage === null) {
