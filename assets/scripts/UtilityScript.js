@@ -17,7 +17,7 @@ let accessTokenValue= retrieveCookie(document.cookie);
 // get query / code from the text area
 var query = document.querySelector('#codequeryTextArea').value;
 
-fetchCall(OrgUtils.OrgBaseUrl+OrgUtils.isData+OrgUtils.apiVersion+OrgUtils.queryString+query)
+fetchCall(OrgUtils.OrgBaseUrl+OrgUtils.isData+OrgUtils.apiVersion+OrgUtils.queryString+query,'GET','',accessTokenValue)
 
 
 
