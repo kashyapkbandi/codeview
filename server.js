@@ -3,7 +3,7 @@ const path = require('path');
 const hbs = require('hbs'); 
 const request = require('request');
 var sf = require('node-salesforce');
-var storage = require('node-localstorage');
+var storage = require('node-localstorage').LocalStorage;
 var bodyParser = require('body-parser')
 
 
